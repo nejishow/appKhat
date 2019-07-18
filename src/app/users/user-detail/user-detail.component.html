@@ -1,0 +1,64 @@
+<button mat-button color="primary" [routerLink]="['/dashboard']">Dashboard</button>
+
+<div class="chart">
+  <div style="display: block;" class="canvas">
+    <canvas baseChart width="400" height="400" [datasets]="lineCharData2" [labels]="lineChartLabels"
+      [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+      [plugins]="lineChartPlugins" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+  </div>
+  <div class="info">
+  <mat-form-field color="primary">
+    <mat-label>Choose an Id</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let id of ids" [value]="id" (tap)="search(id)">
+        {{id}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+<table mat-table [dataSource]="item" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+    The actual rendered columns are set as a property on the row definition" -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> id </th>
+    <td mat-cell *matCellDef="let it"> {{it?.idFirebase}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="age">
+    <th mat-header-cell *matHeaderCellDef> Age </th>
+    <td mat-cell *matCellDef="let it"> {{it?.age}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="TotalDrink">
+    <th mat-header-cell *matHeaderCellDef> Total Drink </th>
+    <td mat-cell *matCellDef="let it"> {{it?.DrinksTotal}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="TotalKhat">
+    <th mat-header-cell *matHeaderCellDef> Total Khat </th>
+    <td mat-cell *matCellDef="let it"> {{it?.KhatTotal}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="TotalTabaco">
+    <th mat-header-cell *matHeaderCellDef> Total Tabaco </th>
+    <td mat-cell *matCellDef="let it"> {{it?.TabacTotal}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="TotalHour">
+    <th mat-header-cell *matHeaderCellDef> Total Hours </th>
+    <td mat-cell *matCellDef="let it"> {{it?.TotalHours}} </td>
+  </ng-container>
+
+
+</table>
+</div>
+</div>

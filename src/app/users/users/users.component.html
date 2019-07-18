@@ -1,0 +1,143 @@
+<div>
+    <div class="chart">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title> Average Khat consumption
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="canvas">
+                    <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                        [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="pieChartColors"
+                        [legend]="pieChartLegend" (chartClick)="chartClicked($event)">
+                    </canvas>
+                </div>
+            </mat-card-content>
+
+        </mat-card>
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title> Average Drinks consumption
+
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="canvas">
+                    <canvas baseChart [data]="pieChartDataDrinks" [labels]="pieChartLabels" [chartType]="pieChartType"
+                        [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="pieChartColors"
+                        [legend]="pieChartLegend" (chartClick)="chartClicked($event)">
+                    </canvas>
+                </div>
+            </mat-card-content>
+
+        </mat-card>
+
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title> Average Tabaco consumption
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="canvas">
+
+                    <canvas baseChart [data]="pieChartDataTabaco" [labels]="pieChartLabels" [chartType]="pieChartType"
+                        [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="pieChartColors"
+                        [legend]="pieChartLegend" (chartClick)="chartClicked($event)">
+                    </canvas>
+                </div>
+            </mat-card-content>
+
+        </mat-card>
+
+
+
+
+
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title> Average Hours spent
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+
+                <div class="canvas">
+
+                    <canvas baseChart [data]="pieChartDataHours" [labels]="pieChartLabels" [chartType]="pieChartType"
+                        [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="pieChartColors"
+                        [legend]="pieChartLegend" (chartClick)="chartClicked($event)">
+                    </canvas>
+                </div>
+            </mat-card-content>
+
+        </mat-card>
+
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title> Average Days per week
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="canvas">
+
+                    <canvas baseChart [data]="pieChartDataDay" [labels]="pieChartLabels" [chartType]="pieChartType"
+                        [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="pieChartColors"
+                        [legend]="pieChartLegend" (chartClick)="chartClicked($event)">
+                    </canvas>
+                </div>
+            </mat-card-content>
+
+        </mat-card>
+
+
+    </div>
+    <table mat-table [dataSource]="items" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> id </th>
+            <td mat-cell *matCellDef="let item" (tap)="goDetails(item.idFirebase)"> {{item?.idFirebase}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="age">
+            <th mat-header-cell *matHeaderCellDef> Age </th>
+            <td mat-cell *matCellDef="let item"> {{item?.age}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="TotalDrink">
+            <th mat-header-cell *matHeaderCellDef> Total Drink </th>
+            <td mat-cell *matCellDef="let item"> {{item?.DrinksTotal}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="TotalKhat">
+            <th mat-header-cell *matHeaderCellDef> Total Khat </th>
+            <td mat-cell *matCellDef="let item"> {{item?.KhatTotal}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="TotalTabaco">
+            <th mat-header-cell *matHeaderCellDef> Total Tabaco </th>
+            <td mat-cell *matCellDef="let item"> {{item?.TabacTotal}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="TotalHour">
+            <th mat-header-cell *matHeaderCellDef> Total Hours </th>
+            <td mat-cell *matCellDef="let item"> {{item?.TotalHours}} </td>
+        </ng-container>
+
+
+    </table>
+
+</div>
